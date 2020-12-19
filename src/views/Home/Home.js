@@ -9,10 +9,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import {test_redux} from "../Redux/actions"
+import {test_redux} from "Redux/actions"
 
 //components
-import Navbar from "../CustomNavbar/CustomNavbar.js"
+import Navbar from "components/CustomNavbar/CustomNavbar.js"
+import PostCard from "components/PostCard/"
 
 //axios
 const axios = require("axios")
@@ -29,6 +30,7 @@ function Home() {
   return (
     <div>
       <Navbar />
+      <PostCard />
       <div className={styles.container}>
         <p>
           Edit <code>src/Home.js</code> and save to reload.

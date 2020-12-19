@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../CustomNavbar/CustomNavbar.js"
+import Navbar from "components/CustomNavbar/CustomNavbar.js"
 import { TextField, Button } from "@material-ui/core"
 
 function MakePost() {

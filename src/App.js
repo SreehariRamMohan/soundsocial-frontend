@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // screens
-import Home from "./Home/Home"
-import LoginSignup from "./LoginSignup/LoginSignup"
-import MakePost from "./MakePost/MakePost"
+import Home from "views/Home/Home"
+import LoginSignup from "views/LoginSignup/LoginSignup"
+import MakePost from "views/MakePost/MakePost"
 
 function App() {
   return (
