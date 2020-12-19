@@ -21,13 +21,13 @@ function UserLibrary() {
       </center>
 
       <Container fluid style={{width: "80%"}}>
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-          <Tab eventKey="home" title="My Clips">
+        <Tabs defaultActiveKey="myclips" id="uncontrolled-tab-example">
+          <Tab eventKey="myclips" title="My Clips">
 
             <PostCard></PostCard>
 
           </Tab>
-          <Tab eventKey="profile" title="Saved">
+          <Tab eventKey="savedposts" title="Saved Posts">
             <Card></Card>
           </Tab>
         </Tabs>

@@ -14,12 +14,6 @@ function CustomNavbar(props) {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
 
-          <NavLink to="/post" className="mx-2">
-            <Button variant="outline-secondary">
-              Make Post
-            </Button>
-          </NavLink>
-
           <NavLink to="/library" className="mx-2">
             <Button variant="outline-secondary">
               Library
