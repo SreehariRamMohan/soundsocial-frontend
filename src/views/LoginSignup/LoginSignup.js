@@ -38,7 +38,7 @@ function LoginSignup() {
       "username": "Blueno",
       "password": "Blueno"
     }
-    
+
     console.log(payload)
 
     let route = "/signup"
