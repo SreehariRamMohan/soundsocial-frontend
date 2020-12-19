@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Nav, Navbar, Form, NavDropdown, FormControl, Button } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { NavLink, Link, withRouter } from "react-router-dom";
 
 import styles from './CustomNavbar.module.css';
 
@@ -13,8 +13,18 @@ function CustomNavbar(props) {
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/post">Create Post</Nav.Link>
-          <Nav.Link href="/library">Library</Nav.Link>
+
+          <NavLink to="/post" className="mx-2">
+            <Button variant="outline-secondary">
+              Make Post
+            </Button>
+          </NavLink>
+
+          <NavLink to="/library" className="mx-2">
+            <Button variant="outline-secondary">
+              Library
+            </Button>
+          </NavLink>
 
           <NavDropdown title="Account" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Likes</NavDropdown.Item>
