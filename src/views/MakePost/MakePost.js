@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "components/CustomNavbar/CustomNavbar.js"
 
 import { TextField, Select, Button } from "@material-ui/core"
-import {useSelector} from "react-redux"
-import {API_URL} from "../../Redux/constants"
+import { useSelector } from "react-redux"
+import { API_URL } from "../../Redux/constants"
 
 const axios = require("axios")
 
@@ -14,8 +14,9 @@ function MakePost() {
     const [thoughts, setThoughts] = useState("")
 
     const [clips, setClips] = useState([])
-    
+
     const mongo_id = useSelector(state => state.mongo_id)
+    const jwt_token = useSelector((state) => state.jwt_token);
 
     function post() {
         console.log(postTitle, clip, thoughts)
@@ -24,13 +25,13 @@ function MakePost() {
     }
 
     useEffect(() => {
+        console.log("calling get clip")
         const payload = {
             "mongo_id": mongo_id
         }
-        axios.get(API_URL + "/clip", payload)
+        axios.post(API_URL + "/getClips", payload)
             .then(res => {
                 console.log(res.data)
-                setClips(res.data.clip_names)
             })
     }, [])
 
