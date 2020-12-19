@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import {test_redux} from "Redux/actions"
+import { test_redux } from "Redux/actions"
 
 //components
 import Navbar from "components/CustomNavbar/CustomNavbar.js"
@@ -30,11 +30,8 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <PostCard />
-      <div className={styles.container}>
-        <p>
-          Edit <code>src/Home.js</code> and save to reload.
-        </p>       
+      <div className="d-flex flex-row pt-3 justify-content-center align-items-center">
+        <PostCard />
       </div>
     </div>
   );

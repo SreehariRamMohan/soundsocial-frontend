@@ -24,11 +24,22 @@ function LoginSignup() {
     toggleLoginState(!loginState);
   }
 
+  useEffect(() => {
+    onSubmit()
+  }, [])
+
   function onSubmit() {
+    console.log("on submit called")
+    // let payload = {
+    //   "username": usernameRef.current.value,
+    //   "password": passwordRef.current.value
+    // }
     let payload = {
-      "username": usernameRef.current.value,
-      "password": passwordRef.current.value
+      "username": "Blueno",
+      "password": "Blueno"
     }
+    
+    console.log(payload)
 
     let route = "/signup"
 
@@ -44,7 +55,7 @@ function LoginSignup() {
 
           dispatch(set_jwt_token(access_token))
           dispatch(set_mongo_id(mongo_id))
-          dispatch(set_username(usernameRef.current.value))
+          dispatch(set_username(payload["username"]))
 
           history.push("/home")
         }
@@ -72,7 +83,7 @@ function LoginSignup() {
             </h4>
           </Form.Label>
           <Col sm={7}>
-            <Form.Control ref={usernameRef} type="text" placeholder="user32" />
+            <Form.Control ref={usernameRef} type="text" placeholder="Blueno" />
           </Col>
         </Form.Group>
 

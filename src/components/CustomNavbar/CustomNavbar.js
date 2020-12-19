@@ -16,7 +16,7 @@ function CustomNavbar(props) {
                 <Form inline>
                     <Nav.Link href="#home"><Link to={"/logout"}>{"Logout"}</Link></Nav.Link>
 
-                    
+
                 </Form>
             </Navbar.Collapse>
         </Navbar>
