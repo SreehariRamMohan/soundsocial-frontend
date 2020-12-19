@@ -1,12 +1,14 @@
 import produce from "immer"
 import {enableAllPlugins} from "immer"
 
-import {SAMPLE_ACTION} from "./constants"
+import {SAMPLE_ACTION, SET_JWT, SET_MONGO_ID, SET_USERNAME} from "./constants"
 
 enableAllPlugins()
 
 const initialState = {
-    sampleData: ""
+    jwt_token: "",
+    mongo_id: "",
+    username: ""
 }
 
 export default function reducer(state = initialState, action) {
@@ -18,6 +20,21 @@ export default function reducer(state = initialState, action) {
           draft.sampleData = action.data;
           return draft;
         }
+
+        case SET_JWT: {
+          draft.jwt_token = action.data;
+          return draft;
+        }
+
+        case SET_MONGO_ID: {
+          draft.mongo_id = action.data
+          return draft;
+        }
+
+        case SET_USERNAME: {
+          draft.username = action.data
+          return draft
+        }
   
         default: {
           return draft;
@@ -26,7 +43,7 @@ export default function reducer(state = initialState, action) {
     }, state);
   
     const nextState = producer(state, action);
-    console.log("Redux action:", action, "Updated state:", nextState);
+    // console.log("Redux action:", action, "Updated state:", nextState);
     return nextState;
   }
   
