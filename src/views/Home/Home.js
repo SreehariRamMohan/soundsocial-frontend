@@ -58,6 +58,8 @@ function Home() {
           feed.map((val, index, arr) => {
             return <PostCard displayAddButton={true}
               post_title={val["title"]}
+              post_id={val["_id"]}
+              clip_id={val["clip_id"]}
               caption={val["caption"]}
               username={val["username"]}
               timestamp={val["timestamp"]}

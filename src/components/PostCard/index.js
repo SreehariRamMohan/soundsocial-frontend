@@ -92,28 +92,30 @@ function PostCard(props) {
 }
 
 PostCard.propTypes = {
-  post_title: PropTypes.string.isRequired, 
-  source_url: PropTypes.string.isRequired,
-  wave_image: PropTypes.string.isRequired,
-  transcript: PropTypes.string.isRequired,
-  clip_title: PropTypes.string.isRequired,
+  // post_title: PropTypes.string.isRequired, 
+  // source_url: PropTypes.string.isRequired,
+  // wave_image: PropTypes.string.isRequired,
+  // transcript: PropTypes.string.isRequired,
+  // clip_title: PropTypes.string.isRequired,
 
+  post_id: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired, 
   timestamp: PropTypes.string.isRequired,
+  clip_id: PropTypes.string.isRequired,
 
   displayAddButton: PropTypes.bool
 };
 
 PostCard.defaultProps = {
-  post_title: "post_title",
-  clip_title: "clip_title",
+  // post_title: "post_title",
+  // clip_title: "clip_title",
+  // source_url: "#",
+  // wave_image: ExampleWave,
+  // transcript: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
   username: "username",
   caption: "<caption> Some quick example text to build on the card title and make up the bulk of the card's content.",
   timestamp: "xxx-xxx-xxx", 
-  source_url: "#",
-  wave_image: ExampleWave,
-  transcript: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
   displayAddButton: false
 };
 
