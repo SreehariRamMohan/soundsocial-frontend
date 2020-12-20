@@ -9,6 +9,8 @@ import Navbar from "components/CustomNavbar/CustomNavbar.js"
 import PostCard from "components/PostCard/"
 import ClipCard from "components/ClipCard/ClipCard.js"
 
+import styles from './UserLibrary.module.css';
+
 
 const axios = require("axios")
 
@@ -32,7 +34,8 @@ function UserLibrary() {
   function renderClipsTab(){
     return (
       <Tab eventKey="myclips" title="My Clips">
-        <Container fluid>
+        <Container fluid >
+          <center>
           {clips.map((value, index, arr) => {
             return <ClipCard 
               title={value.title}
@@ -42,6 +45,7 @@ function UserLibrary() {
               transcript={value.transcript}
             />
           })}
+          </center>
         </Container>
       </Tab>
     );
