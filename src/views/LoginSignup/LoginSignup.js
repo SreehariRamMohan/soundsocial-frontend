@@ -27,7 +27,7 @@ function LoginSignup() {
   }
 
   useEffect(() => {
-    onSubmit()
+    // onSubmit()
   }, [])
 
   function onSubmit() {
