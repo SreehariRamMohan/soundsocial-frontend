@@ -2,17 +2,55 @@ import React, { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from './PostCard.module.css';
 
 import ExampleWave from 'assets/audiowave-example.png';
 import AddButton from 'assets/addButton.svg';
 
+import { API_URL } from "../../Redux/constants"
+
+//axios
+const axios = require("axios")
+
 function PostCard(props) {
 
+  const dispatch = useDispatch();
+  const mongo_id = useSelector(state => state.mongo_id)
+  const jwt_token = useSelector((state) => state.jwt_token);
+  const [clipData, setClipData] = useState({});
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `${API_URL}/clip/${props.clip_id}`,
+    })
+      .then((res) => {
+        setClipData(res.data.clip)
+        console.log(JSON.stringify(res.data.clip));
+      })
+  }, []);
+
   function savePost(){
-    // console.log("saving " + props.post_id);
+    console.log("saving " + props.post_id);
+
+    axios({
+      method: "post",
+      url: `${API_URL}/savePost`,
+      data: {
+        "mongo_id": mongo_id,
+        "post_id": props.post_id,
+      },
+      headers: {
+        Authorization: `Bearer ${jwt_token}`,
+      },
+    })
+      .then((res) => {
+        console.log("post saved", res.data)
+      })
   }
+
 
   return (
     <Card className={styles.container}>
@@ -42,7 +80,7 @@ function PostCard(props) {
             <Col xs={5} className="mx-2">
               <Card.Text>
                 <h5>Thoughts</h5>
-                {props.caption}
+                {clipData.caption}
               </Card.Text>
 
             </Col>
@@ -51,7 +89,7 @@ function PostCard(props) {
 
           <Row>
             <Col xs={5}>
-              <Card.Img variant="top" src={props.wave_image} />
+              <Card.Img variant="top" src={clipData.gcs_wavefile_image} />
             </Col>
 
             <Col></Col>
@@ -61,7 +99,7 @@ function PostCard(props) {
 
               <Card.Text>
                 <h5>Transcripts</h5>
-                {props.transcript}
+                {clipData.transcript}
               </Card.Text>
 
             </Col>
@@ -78,11 +116,11 @@ function PostCard(props) {
 
         <Card.Title className={styles.cardTitle}>
           <Row className="align-items-md-center">
-            <Link to={props.source_url}>
+            <Link to={clipData.source_url}>
               <h1 className="display-3"> {props.post_title} </h1>
             </Link>
 
-            <h2 className="display-5 ml-4 mt-4"> {props.clip_title} </h2>
+            <h2 className="display-5 ml-4 mt-4"> {clipData.title} </h2>
           </Row>
         </Card.Title>
 
@@ -92,7 +130,7 @@ function PostCard(props) {
 }
 
 PostCard.propTypes = {
-  // post_title: PropTypes.string.isRequired, 
+  post_title: PropTypes.string.isRequired, 
   // source_url: PropTypes.string.isRequired,
   // wave_image: PropTypes.string.isRequired,
   // transcript: PropTypes.string.isRequired,
@@ -108,7 +146,7 @@ PostCard.propTypes = {
 };
 
 PostCard.defaultProps = {
-  // post_title: "post_title",
+  post_title: "post_title",
   // clip_title: "clip_title",
   // source_url: "#",
   // wave_image: ExampleWave,
