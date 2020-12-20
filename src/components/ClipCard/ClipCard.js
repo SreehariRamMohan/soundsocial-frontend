@@ -47,18 +47,18 @@ function ClipCard(props) {
     <Card className={styles.container}>
       <Card.Body className="p-5">
         <Card.Title>
-          <Link to={props.source_url}>
 
-            <a target="_blank" href={props.source_url}>
-              <h1 className="display-3">
-                {props.title}
-              </h1>
-            </a>
+          <a target="_blank" href={props.source_url}>
+            <h1 className="display-3">
+              {props.title}
+            </h1>
+          </a>
 
-          </Link>
         </Card.Title>
         <Card.Img variant="top" src={image} />
-        <audio src={audioSrc} controls />
+        <div className="my-3">
+          <audio src={audioSrc} controls />
+        </div>
         <Card.Text>
           <h5>Transcript</h5>
           {props.transcript}

@@ -115,7 +115,9 @@ function PostCard(props) {
           <Row>
             <Col xs={5}>
               <Card.Img variant="top" src={image} /> 
-              <audio src={audioSrc} controls />
+              <div className="my-3">
+                <audio src={audioSrc} controls />
+              </div>
             </Col>
 
             <Col></Col>

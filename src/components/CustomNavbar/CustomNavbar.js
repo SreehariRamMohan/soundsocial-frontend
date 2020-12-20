@@ -19,15 +19,6 @@ function CustomNavbar(props) {
               Library
             </Button>
           </NavLink>
-
-          <NavDropdown title="Account" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Likes</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Following</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Settings</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.3">Posts</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Followers</NavDropdown.Item>
-          </NavDropdown>
         </Nav>
         <Form inline>
           <Nav.Link href="#home"><Link to={"/logout"}>{"Logout"}</Link></Nav.Link>
