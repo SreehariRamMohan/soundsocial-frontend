@@ -72,9 +72,13 @@ function PostCard(props) {
         }
 
         <Card.Title className={styles.cardTitle}>
-          <Link to={props.source_url}>
-            <h1 className="display-3"> {props.title} </h1>
-          </Link>
+          <Row className="align-items-md-center">
+            <Link to={props.source_url}>
+              <h1 className="display-3"> {props.post_title} </h1>
+            </Link>
+
+            <h2 className="display-5 ml-4 mt-4"> {props.clip_title} </h2>
+          </Row>
         </Card.Title>
 
       </Card.Body>
@@ -83,10 +87,11 @@ function PostCard(props) {
 }
 
 PostCard.propTypes = {
-  title: PropTypes.string.isRequired, 
+  post_title: PropTypes.string.isRequired, 
   source_url: PropTypes.string.isRequired,
   wave_image: PropTypes.string.isRequired,
   transcript: PropTypes.string.isRequired,
+  clip_title: PropTypes.string.isRequired,
 
   username: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired, 
@@ -96,7 +101,8 @@ PostCard.propTypes = {
 };
 
 PostCard.defaultProps = {
-  title: "title",
+  post_title: "post_title",
+  clip_title: "clip_title",
   username: "username",
   caption: "<caption> Some quick example text to build on the card title and make up the bulk of the card's content.",
   timestamp: "xxx-xxx-xxx", 
