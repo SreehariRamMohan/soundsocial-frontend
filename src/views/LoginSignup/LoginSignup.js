@@ -137,7 +137,7 @@ function LoginSignup() {
           <Row>
             <Col>
               <h1 className="display-4">
-                Download Audio-Clipper Extension <a href="">Here</a>
+                Download Audio-Clipper Extension <a href="https://github.com/SreehariRamMohan/soundsocial-frontend" target="_blank">Here</a>
               </h1>
             </Col>
             <Col className="justify-content-center">{renderForm()}</Col>
