@@ -51,6 +51,7 @@ Back End
 3. Activate the environment ```source activate venv``` and pip install the requirements.txt file ```pip install -r requirements.txt```
 4. create a folder called WavefileUploads ```mkdir WavefileUploads``` in root
 5. Create a local mongodb database called ```goodpods```. Modify line 45 of app.py in backend to connect to your database. 
+6. Connect to a Google Cloud Storage bucket named ```goodpodswaveforms``` don't forget to export your credentials ```export GOOGLE_APPLICATION_CREDENTIALS="./***.json"``` (https://cloud.google.com/deployment-manager/docs/step-by-step-guide/installation-and-setup)
 6. run the server ```python app.py```
 
 Linux Quick Capture Utility (Ubuntu Instructions)
