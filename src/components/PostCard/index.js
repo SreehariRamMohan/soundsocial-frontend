@@ -22,6 +22,7 @@ function PostCard(props) {
   const [clipData, setClipData] = useState({});
 
   const [image, setImage] = useState("");
+  const [audioSrc, setAudioSrc] = useState(null);
 
   useEffect(() => {
     axios({
@@ -41,6 +42,19 @@ function PostCard(props) {
           .then((res) => {
             setImage(_imageEncode(res.data));
           });
+
+        axios.get(`${API_URL}/audio/${res.data.clip.gcs_wavefile}`, {
+          responseType: 'arraybuffer',
+          headers: { 'Content-Type': 'audio/wav' }
+        }).then((res) => {
+
+          const blob = new Blob([res.data], {
+            type: 'audio/wav'
+          });
+
+          const url = URL.createObjectURL(blob);
+          setAudioSrc(url);
+        });
       });
   }, []);
 
@@ -100,7 +114,8 @@ function PostCard(props) {
 
           <Row>
             <Col xs={5}>
-              { <Card.Img variant="top" src={image} /> }
+              <Card.Img variant="top" src={image} /> 
+              <audio src={audioSrc} controls />
             </Col>
 
             <Col></Col>

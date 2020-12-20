@@ -15,6 +15,7 @@ import { test_redux } from "Redux/actions"
 import Navbar from "components/CustomNavbar/CustomNavbar.js"
 import PostCard from "components/PostCard/"
 import MakePost from "components/MakePost/MakePost.js"
+// import WaveForm from "components/WaveForm/WaveForm.js"
 import { Container } from "react-bootstrap"
 import { API_URL } from "../../Redux/constants"
 

@@ -16,6 +16,7 @@ const axios = require("axios")
 function ClipCard(props) {
 
   const [image, setImage] = useState("");
+  const [audioSrc, setAudioSrc] = useState(null);
 
   useEffect(() => {
     axios({
@@ -25,7 +26,21 @@ function ClipCard(props) {
     })
       .then((res) => {
         setImage(_imageEncode(res.data));
-      })
+      });
+
+    axios.get(`${API_URL}/audio/${props.wavefile}`, {
+      responseType: 'arraybuffer',
+      headers: { 'Content-Type': 'audio/wav' }
+    }).then((res) => {
+
+      const blob = new Blob([res.data], {
+        type: 'audio/wav'
+      });
+
+      const url = URL.createObjectURL(blob);
+      setAudioSrc(url);
+    });
+
   }, [])
 
   return (
@@ -43,6 +58,7 @@ function ClipCard(props) {
           </Link>
         </Card.Title>
         <Card.Img variant="top" src={image} />
+        <audio src={audioSrc} controls />
         <Card.Text>
           <h5>Transcript</h5>
           {props.transcript}
