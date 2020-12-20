@@ -51,19 +51,19 @@ function Home() {
       <Navbar />
 
       <Container className="my-5 px-5 py-5 border rounded">
-        <MakePost refresh={populateFeed}/>
+        <MakePost refresh={populateFeed} />
       </Container>
-
+      <center>
         {
           feed.map((val, index, arr) => {
-            return <PostCard displayAddButton={true} 
-                     title={val["title"]}
-                     caption={val["caption"]} 
-                     username={val["username"]}
-                     timestamp={val["timestamp"]}/>
+            return <PostCard displayAddButton={true}
+              title={val["title"]}
+              caption={val["caption"]}
+              username={val["username"]}
+              timestamp={val["timestamp"]} />
           })
         }
-        
+      </center>
     </div>
   );
 }
