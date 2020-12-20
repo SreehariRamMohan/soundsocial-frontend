@@ -40,15 +40,18 @@ We deployed our backend Flask server on a Google Cloud Instance, and used a Goog
 ### Building from source
 The project is no longer hosted on google cloud. To build from source follow the instructions below. 
 
-- Front End
-  - ```npm install``` in root directory to install node modules
-  - ```npm start``` to start localhost on port 3000
 
-- Back End
-  - set up mongodb
-  - create a folder called WavefileUploads ```mkdir WavefileUploads``` in root
-  - created a virtual environment and install the requirements.txt file ```pip install -r requirements.txt```
-  - run the server ```python app.py```
+Front End
+1. ```npm install``` in root directory to install node modules
+2. ```npm start``` to start localhost on port 3000
+
+Back End
+1. Clone this repository. 
+2. Create a python virtual environment ```python3 -m venv ./venv```
+3. Activate the environment ```source activate venv``` and pip install the requirements.txt file ```pip install -r requirements.txt```
+4. create a folder called WavefileUploads ```mkdir WavefileUploads``` in root
+5. Create a local mongodb database called ```goodpods```. Modify line 45 of app.py in backend to connect to your database. 
+6. run the server ```python app.py```
 
 - Linux Quick Capture Utility
 
