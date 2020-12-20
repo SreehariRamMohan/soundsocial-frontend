@@ -10,12 +10,6 @@
 	bottom: 1rem;
 }
 
-.temp{
-	display: flex;
-	justify-content: end;
-	align-items: end;
-}
-
 .container{
 	width: 80vw; 
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

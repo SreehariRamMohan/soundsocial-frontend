@@ -147,9 +147,11 @@ function PostCard(props) {
           </Row>
         </Card.Title>
 
-        <div className={styles.clipTitle}>
-          <h4 className="display-6 ml-4 mt-5"> { clipData.title } </h4>
-        </div>
+          <h3 className="ml-4 mt-5"> 
+            <div className={styles.clipTitle}>
+              { clipData.title } 
+            </div>
+          </h3>
       </Card.Body>
     </Card>
   )
