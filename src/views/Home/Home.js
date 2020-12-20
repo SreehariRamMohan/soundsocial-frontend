@@ -26,8 +26,12 @@ function Home() {
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-
+    
   }, []);
+
+  function populateFeed() {
+    
+  }
 
   return (
     <div>
