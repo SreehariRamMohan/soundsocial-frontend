@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={AuthComponent(Home)} />
-        <Route path="/home" exact component={AuthComponent(Home)} />
+        <Route path="/home" exact component={AuthComponent(UserLibrary)} />
         <Route path="/logout" exact component={LoginSignup} />
         <Route path="/library" exact component={AuthComponent(UserLibrary)} />
       </Switch>
