@@ -16,6 +16,7 @@ import Navbar from "components/CustomNavbar/CustomNavbar.js"
 import PostCard from "components/PostCard/"
 import MakePost from "components/MakePost/MakePost.js"
 import { Container } from "react-bootstrap"
+import { API_URL } from "../../Redux/constants"
 
 //axios
 const axios = require("axios")
@@ -24,13 +25,25 @@ function Home() {
 
   const dispatch = useDispatch();
   const [currentTime, setCurrentTime] = useState(0);
+  const jwt_token = useSelector((state) => state.jwt_token);
+
 
   useEffect(() => {
-    
+    populateFeed()
   }, []);
 
   function populateFeed() {
-    
+    axios({
+      method: "get",
+      url: `${API_URL}/feed/10`,
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${jwt_token}`,
+      }
+    })
+      .then((res) => {
+        console.log("Feed data", res.data)
+      })
   }
 
   return (
@@ -38,13 +51,13 @@ function Home() {
       <Navbar />
 
       <Container className="my-5 px-5 py-5 border rounded">
-        <MakePost /> 
+        <MakePost />
       </Container>
 
       <div className="d-flex flex-row pt-3 justify-content-center align-items-center">
-        <PostCard 
+        {/* <PostCard 
           displayAddButton={true} 
-        />
+        /> */}
       </div>
     </div>
   );
