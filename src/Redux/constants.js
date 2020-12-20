@@ -4,6 +4,7 @@ export const SET_MONGO_ID =  "SET_MONGO_ID"
 export const SET_USERNAME = "SET_USERNAME"
 
 export const API_URL = "http://localhost:5000"
+// export const API_URL = "http://34.94.91.117:5000"
 
 export function _imageEncode (arrayBuffer) {
   let u8 = new Uint8Array(arrayBuffer)
