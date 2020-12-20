@@ -21,8 +21,22 @@ function MakePost() {
 
     function post() {
         console.log(postTitle, clip, thoughts)
-
-        //axios post to backend
+        axios({
+          method: "post",
+          url: `${API_URL}/createPost`,
+          data: {
+            "mongo_id": mongo_id,
+            "title": postTitle,
+            "caption": thoughts,
+          },
+          withCredentials: true,
+          headers: {
+              Authorization: `Bearer ${jwt_token}`,
+          },
+      })
+          .then((res) => {
+              console.log("message posted", res.data)
+          })
     }
 
     useEffect(() => {
@@ -39,15 +53,15 @@ function MakePost() {
       <form noValidate autoComplete="off">
         <p>Make Post</p>
 
-        <TextField className="mt-3" fullWidth id="standard-basic" label="Post Title" value={post} onClick={(e) => { setPostTitle(e.target.value) }} />
+        <TextField className="mt-3" fullWidth id="standard-basic" label="Post Title" value={postTitle} onChange={(e) => { setPostTitle(e.target.value) }} />
         <Select className="mt-3" fullWidth id="standard-basic" label="Select Clip from Library" value={clip} onClick={(e) => { setClip(e.target.value) }}>
           {clips.map((value, index, arr) => {
-            return <option>{value}</option>
+            return <option value={value}>{value}</option>
           })
           }
         </Select>
-        <TextField className="mt-3" multiline fullWidth id="standard-basic" label="Thoughts" value={thoughts} onClick={(e) => { setThoughts(e.target.value) }} />
-        <Button className="mt-3" variant="outlined" color="primary">
+        <TextField className="mt-3" multiline fullWidth id="standard-basic" label="Thoughts" value={thoughts} onChange={(e) => { setThoughts(e.target.value) }} />
+        <Button className="mt-3" variant="outlined" color="primary" onClick={post}>
           Post
         </Button>
       </form>
