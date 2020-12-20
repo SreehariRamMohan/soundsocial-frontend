@@ -9,7 +9,24 @@ import ExampleWave from 'assets/audiowave-example.png';
 import AddButton from 'assets/addButton.svg';
 import PropTypes from 'prop-types';
 
+import { API_URL, _imageEncode } from "../../Redux/constants"
+
+const axios = require("axios")
+
 function ClipCard(props) {
+
+  const [image, setImage] = useState("");
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `${API_URL}/image/${props.wavefile_image}`,
+      responseType: 'arraybuffer' 
+    })
+      .then((res) => {
+        setImage(_imageEncode(res.data));
+      })
+  }, [])
 
   return (
     <Card className={styles.container}>
@@ -25,7 +42,7 @@ function ClipCard(props) {
 
           </Link>
         </Card.Title>
-        <Card.Img variant="top" src={props.wave_image} />
+        <Card.Img variant="top" src={image} />
         <Card.Text>
           <h5>Transcript</h5>
           {props.transcript}
@@ -40,14 +57,14 @@ function ClipCard(props) {
 ClipCard.propTypes = {
   title: PropTypes.string.isRequired, 
   source_url: PropTypes.string.isRequired,
-  wave_image: PropTypes.string.isRequired, 
+  wavefile_image: PropTypes.string.isRequired, 
   transcript: PropTypes.string.isRequired,
 };
 
 ClipCard.defaultProps = {
   title: "title",
   source_url: "#",
-  wave_image: ExampleWave, 
+  wavefile_image: "#", 
   transcript: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
 };
 

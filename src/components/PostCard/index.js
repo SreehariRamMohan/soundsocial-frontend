@@ -9,7 +9,7 @@ import styles from './PostCard.module.css';
 import ExampleWave from 'assets/audiowave-example.png';
 import AddButton from 'assets/addButton.svg';
 
-import { API_URL } from "../../Redux/constants"
+import { API_URL, _imageEncode } from "../../Redux/constants"
 
 //axios
 const axios = require("axios")
@@ -21,6 +21,8 @@ function PostCard(props) {
   const jwt_token = useSelector((state) => state.jwt_token);
   const [clipData, setClipData] = useState({});
 
+  const [image, setImage] = useState("");
+
   useEffect(() => {
     axios({
       method: "get",
@@ -30,7 +32,16 @@ function PostCard(props) {
         setClipData(res.data.clip);
         console.log(props.clip_id);
         console.log(JSON.stringify(res.data.clip));
-      })
+
+        axios({
+          method: "get",
+          url: `${API_URL}/image/${res.data.clip.gcs_wavefile_image}`,
+          responseType: 'arraybuffer' 
+        })
+          .then((res) => {
+            setImage(_imageEncode(res.data));
+          });
+      });
   }, []);
 
   function savePost(){
@@ -89,7 +100,7 @@ function PostCard(props) {
 
           <Row>
             <Col xs={5}>
-              { <Card.Img variant="top" src={clipData.gcs_wavefile_image} /> }
+              { <Card.Img variant="top" src={image} /> }
             </Col>
 
             <Col></Col>

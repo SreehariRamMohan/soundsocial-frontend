@@ -9,11 +9,12 @@ import Navbar from "components/CustomNavbar/CustomNavbar.js"
 import PostCard from "components/PostCard/"
 import ClipCard from "components/ClipCard/ClipCard.js"
 
+
 const axios = require("axios")
 
 function UserLibrary() {
 
-  const [clips, setClips] = useState([])
+  const [clips, setClips] = useState([]);
 
   const mongo_id = useSelector(state => state.mongo_id)
   const jwt_token = useSelector((state) => state.jwt_token);
