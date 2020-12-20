@@ -9,6 +9,11 @@ import ExampleWave from 'assets/audiowave-example.png';
 import AddButton from 'assets/addButton.svg';
 
 function PostCard(props) {
+
+  function savePost(){
+    // console.log("saving " + props.post_id);
+  }
+
   return (
     <Card className={styles.container}>
       <Card.Body className="p-5">
@@ -66,8 +71,8 @@ function PostCard(props) {
         </Container>
 
         {props.displayAddButton &&
-          <div className="addButton">
-            <img src={AddButton} alt="" className={styles.addButton} />
+          <div className={styles.addButtonWrapper} onClick={savePost}>
+            <h1>+</h1>
           </div>
         }
 
