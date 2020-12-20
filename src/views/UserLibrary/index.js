@@ -35,9 +35,10 @@ function UserLibrary() {
           {clips.map((value, index, arr) => {
             return <ClipCard 
               title={value.title}
-              url={value.source_url}
-              wavefile={value.wavefile}
-              wavefile_image={value.wavefile_image}
+              source_url={value.source_url}
+              wavefile={value.gcs_wavefile}
+              wavefile_image={value.gcs_wavefile_image}
+              transcript={value.transcript}
             />
           })}
         </Container>
@@ -69,7 +70,9 @@ function UserLibrary() {
       <Container fluid style={{width: "80%"}}>
         <Tabs defaultActiveKey="myclips" id="uncontrolled-tab-example">
           { renderClipsTab() }
-          { renderSavedPostsTab() }
+          { 
+          // renderSavedPostsTab() 
+          }
         </Tabs>
       </Container>
 

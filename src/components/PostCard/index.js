@@ -27,7 +27,8 @@ function PostCard(props) {
       url: `${API_URL}/clip/${props.clip_id}`,
     })
       .then((res) => {
-        setClipData(res.data.clip)
+        setClipData(res.data.clip);
+        console.log(props.clip_id);
         console.log(JSON.stringify(res.data.clip));
       })
   }, []);
@@ -70,7 +71,6 @@ function PostCard(props) {
                 </div>
 
               </Card.Subtitle>
-
               <br />
 
             </Col>
@@ -80,7 +80,7 @@ function PostCard(props) {
             <Col xs={5} className="mx-2">
               <Card.Text>
                 <h5>Thoughts</h5>
-                {clipData.caption}
+                {props.caption}
               </Card.Text>
 
             </Col>
@@ -89,7 +89,7 @@ function PostCard(props) {
 
           <Row>
             <Col xs={5}>
-              <Card.Img variant="top" src={clipData.gcs_wavefile_image} />
+              { <Card.Img variant="top" src={clipData.gcs_wavefile_image} /> }
             </Col>
 
             <Col></Col>
@@ -99,7 +99,7 @@ function PostCard(props) {
 
               <Card.Text>
                 <h5>Transcripts</h5>
-                {clipData.transcript}
+                { clipData.transcript }
               </Card.Text>
 
             </Col>
@@ -116,11 +116,11 @@ function PostCard(props) {
 
         <Card.Title className={styles.cardTitle}>
           <Row className="align-items-md-center">
-            <Link to={clipData.source_url}>
+            <a target="_blank" href={clipData.source_url}>
               <h1 className="display-3"> {props.post_title} </h1>
-            </Link>
+            </a>
 
-            <h2 className="display-5 ml-4 mt-4"> {clipData.title} </h2>
+            <h4 className="display-6 ml-4 mt-4"> { clipData.title } </h4>
           </Row>
         </Card.Title>
 

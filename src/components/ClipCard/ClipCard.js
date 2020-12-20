@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from './ClipCard.module.css';
 
@@ -15,9 +16,13 @@ function ClipCard(props) {
       <Card.Body className="p-5">
         <Card.Title>
           <Link to={props.source_url}>
-            <h1 className="display-3">
-              {props.title}
-            </h1>
+
+            <a target="_blank" href={props.source_url}>
+              <h1 className="display-3">
+                {props.title}
+              </h1>
+            </a>
+
           </Link>
         </Card.Title>
         <Card.Img variant="top" src={props.wave_image} />
