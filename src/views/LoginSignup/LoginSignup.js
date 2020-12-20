@@ -9,6 +9,8 @@ import styles from './LoginSignup.module.css';
 import { set_jwt_token, set_mongo_id, set_username } from "Redux/actions"
 import Navbar from "components/CustomNavbar/CustomNavbar.js"
 
+import { ReactComponent as Blob } from "../../assets/blob.svg"
+
 const axios = require("axios")
 
 function LoginSignup() {
@@ -25,7 +27,7 @@ function LoginSignup() {
   }
 
   useEffect(() => {
-    onSubmit()
+    // onSubmit()
   }, [])
 
   function onSubmit() {
@@ -126,15 +128,16 @@ function LoginSignup() {
 
   return (
     <React.Fragment>
+      <Blob className={styles.blob}/>
+
       <Navbar />
 
       <div className={styles.background} >
         <div className={styles.card}>
-
           <Row>
             <Col>
               <h1 className="display-4">
-                Download Pod-Clipper Extension
+                Download Audio-Clipper Extension <a href="">Here</a>
               </h1>
             </Col>
             <Col className="justify-content-center">{renderForm()}</Col>

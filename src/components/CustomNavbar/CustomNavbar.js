@@ -8,7 +8,7 @@ function CustomNavbar(props) {
   return (
       <Navbar collapseOnSelect className="mx-3 my-1" variant="light" expand="lg">
 
-      <Navbar.Brand><Link to={"/home"}>{"Goodpods"}</Link></Navbar.Brand>
+      <Navbar.Brand><Link to={"/home"}>{"Soundsocial"}</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
       <Navbar.Collapse id="responsive-navbar-nav">

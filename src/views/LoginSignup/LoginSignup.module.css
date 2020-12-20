@@ -10,3 +10,10 @@
 	width: 80%;
 }
 
+.blob {
+	width: 40%;
+	position: absolute;
+	left: -7rem;
+	bottom: 7rem;
+}
+
