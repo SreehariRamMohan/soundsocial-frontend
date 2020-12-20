@@ -60,7 +60,8 @@ function Home() {
               post_title={val["title"]}
               caption={val["caption"]}
               username={val["username"]}
-              timestamp={val["timestamp"]} />
+              timestamp={val["timestamp"]}
+               />
           })
         }
       </center>
