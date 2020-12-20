@@ -144,10 +144,12 @@ function PostCard(props) {
               <h3 className="display-5"> {props.post_title} </h3>
             </a>
 
-            <h4 className="display-6 ml-4 mt-5"> { clipData.title } </h4>
           </Row>
         </Card.Title>
 
+        <div className={styles.clipTitle}>
+          <h4 className="display-6 ml-4 mt-5"> { clipData.title } </h4>
+        </div>
       </Card.Body>
     </Card>
   )

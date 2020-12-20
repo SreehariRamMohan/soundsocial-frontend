@@ -1,8 +1,13 @@
 
 .cardTitle{
 	position: absolute;
-	bottom: -0.5rem;
-	right: 0;
+	bottom: 0rem;
+	right: 3rem;
+}
+
+.clipTitle{
+	position: absolute;
+	bottom: 1rem;
 }
 
 .temp{
