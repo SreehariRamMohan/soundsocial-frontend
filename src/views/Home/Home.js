@@ -27,6 +27,7 @@ function Home() {
   const [currentTime, setCurrentTime] = useState(0);
   const jwt_token = useSelector((state) => state.jwt_token);
 
+  const [feed, setFeed] = useState([])
 
   useEffect(() => {
     populateFeed()
@@ -36,13 +37,12 @@ function Home() {
     axios({
       method: "get",
       url: `${API_URL}/feed/10`,
-      withCredentials: true,
       headers: {
         Authorization: `Bearer ${jwt_token}`,
       }
     })
       .then((res) => {
-        console.log("Feed data", res.data)
+        setFeed(res.data.posts)
       })
   }
 
@@ -51,14 +51,19 @@ function Home() {
       <Navbar />
 
       <Container className="my-5 px-5 py-5 border rounded">
-        <MakePost />
+        <MakePost refresh={populateFeed}/>
       </Container>
 
-      <div className="d-flex flex-row pt-3 justify-content-center align-items-center">
-        {/* <PostCard 
-          displayAddButton={true} 
-        /> */}
-      </div>
+        {
+          feed.map((val, index, arr) => {
+            return <PostCard displayAddButton={true} 
+                     title={val["title"]}
+                     caption={val["caption"]} 
+                     username={val["username"]}
+                     timestamp={val["timestamp"]}/>
+          })
+        }
+        
     </div>
   );
 }

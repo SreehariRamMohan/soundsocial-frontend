@@ -8,7 +8,7 @@ import { API_URL } from "../../Redux/constants"
 
 const axios = require("axios")
 
-function MakePost() {
+function MakePost(props) {
 
     const [postTitle, setPostTitle] = useState("")
     const [clip, setClip] = useState("")
@@ -36,6 +36,7 @@ function MakePost() {
       })
           .then((res) => {
               console.log("message posted", res.data)
+              props.refresh()
           })
     }
 
