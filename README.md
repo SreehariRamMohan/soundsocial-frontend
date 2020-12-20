@@ -53,7 +53,11 @@ Back End
 5. Create a local mongodb database called ```goodpods```. Modify line 45 of app.py in backend to connect to your database. 
 6. run the server ```python app.py```
 
-- Linux Quick Capture Utility
+Linux Quick Capture Utility (Ubuntu Instructions)
+1. Install PyGObject on your system with `sudo apt-get install python3-gi`
+2. Configure `pavucontrol` for system audio recording by following the instructions on [this link](https://askubuntu.com/a/682793)
+3. `pip install -r requirements` to install the dependencies
+4. Run `python app.py` to start the script. A icon should appear on your status bar, allowing you to start and stop recording audio, as well as quit the application.
 
 ### Created By
 - Sreehari Rammohan
