@@ -49,7 +49,9 @@ function UserLibrary() {
     return (
       <Tab eventKey="savedposts" title="Saved Posts">
         <Container fluid>
-          <PostCard></PostCard>
+          <PostCard 
+            displayAddButton={false} 
+          />
         </Container>
       </Tab>
     );

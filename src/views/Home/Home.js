@@ -42,7 +42,9 @@ function Home() {
       </Container>
 
       <div className="d-flex flex-row pt-3 justify-content-center align-items-center">
-        <PostCard />
+        <PostCard 
+          displayAddButton={true} 
+        />
       </div>
     </div>
   );

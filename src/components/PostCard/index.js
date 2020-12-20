@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import styles from './PostCard.module.css';
 
@@ -21,7 +22,7 @@ function PostCard(props) {
                     <span class="absolute bottom-0 right-0 block h-4 w-4 rounded-full ring-2 ring-white bg-green-400"></span>
                   </span>
                   <h2>
-                    Username
+                    {props.username}
                   </h2>
                 </div>
 
@@ -36,8 +37,7 @@ function PostCard(props) {
             <Col xs={5} className="mx-2">
               <Card.Text>
                 <h5>Thoughts</h5>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                {props.caption}
               </Card.Text>
 
             </Col>
@@ -46,7 +46,7 @@ function PostCard(props) {
 
           <Row>
             <Col xs={5}>
-              <Card.Img variant="top" src={ExampleWave} />
+              <Card.Img variant="top" src={props.wave_image} />
             </Col>
 
             <Col></Col>
@@ -56,8 +56,7 @@ function PostCard(props) {
 
               <Card.Text>
                 <h5>Transcripts</h5>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
+                {props.transcript}
               </Card.Text>
 
             </Col>
@@ -66,22 +65,46 @@ function PostCard(props) {
 
         </Container>
 
-        <div className="addButton">
-          <img src={AddButton} alt="" className={styles.addButton} />
-        </div>
+        {props.displayAddButton &&
+          <div className="addButton">
+            <img src={AddButton} alt="" className={styles.addButton} />
+          </div>
+        }
 
         <Card.Title className={styles.cardTitle}>
-          <Link>
-            <h1 className="display-3"> Card Title </h1>
+          <Link to={props.source_url}>
+            <h1 className="display-3"> {props.title} </h1>
           </Link>
         </Card.Title>
 
-
       </Card.Body>
     </Card>
-
   )
 }
+
+PostCard.propTypes = {
+  title: PropTypes.string.isRequired, 
+  source_url: PropTypes.string.isRequired,
+  wave_image: PropTypes.string.isRequired,
+  transcript: PropTypes.string.isRequired,
+
+  username: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired, 
+  timestamp: PropTypes.string.isRequired,
+
+  displayAddButton: PropTypes.bool
+};
+
+PostCard.defaultProps = {
+  title: "title",
+  username: "username",
+  caption: "<caption> Some quick example text to build on the card title and make up the bulk of the card's content.",
+  timestamp: "xxx-xxx-xxx", 
+  source_url: "#",
+  wave_image: ExampleWave,
+  transcript: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", 
+  displayAddButton: false
+};
 
 export default withRouter(PostCard);
 
